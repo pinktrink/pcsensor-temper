@@ -269,7 +269,7 @@ void control_transfer(libusb_device_handle *dev, const char *pquestion) {
 
 void interrupt_read(libusb_device_handle *dev, unsigned char *answer) {
     int r,s,i;
-    bzero(answer, reqIntLen);
+    memset(answer, 0, reqIntLen);
 
     s = libusb_interrupt_transfer(dev, endpoint_Int_in, answer, reqIntLen, &r, timeout);
     if(r != reqIntLen) {
