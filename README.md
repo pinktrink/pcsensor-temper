@@ -44,6 +44,13 @@ $ make
 ...
 # cp pcsensor /usr/local/bin/
 ```
+## Ubuntu 16 & 18 / Debian
+```
+# sudo apt install libgusb-dev gcc
+# make
+...
+# cp pcsensor /usr/local/bin/
+```
 
 # Usage
 ```
