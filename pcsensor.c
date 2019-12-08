@@ -192,15 +192,19 @@ int find_lvr_winusb(temper_device_t *devices) {
 
 int setup_libusb_access(temper_device_t *devices) {
     int i;
+    int log_level = 0;  // LIBUSB_LOG_LEVEL_NONE
     int numdev;
 
     libusb_init(&ctx);
 
     if(debug) {
-        libusb_set_debug(ctx, 4); //LIBUSB_LOG_LEVEL_DEBUG
-    } else {
-        libusb_set_debug(ctx, 0); //LIBUSB_LOG_LEVEL_NONE
+        log_level = 4;  // LIBUSB_LOG_LEVEL_DEBUG
     }
+#if LIBUSBX_API_VERSION < 0x01000106
+    libusb_set_debug(ctx, log_level);
+#else
+    libusb_set_option(ctx, LIBUSB_OPTION_LOG_LEVEL, log_level);
+#endif
 
     if((numdev = find_lvr_winusb(devices)) < 1) {
         fprintf(stderr, "Couldn't find the USB device, Exiting: %d\n", numdev);
