@@ -69,6 +69,7 @@ temper_type_t tempers[TEMPER_TYPES] = {
     { 0x0c45, 0x7401, "TEMPer2",   1, 2, 0, decode_answer_fm75  }, // TEMPer2* eg. TEMPer2V1.3
     { 0x0c45, 0x7401, "TEMPer1",   0, 1, 0, decode_answer_fm75  }, // other 0c45:7401 eg. TEMPerV1.4
     { 0x0c45, 0x7402, "TEMPerHUM", 0, 1, 1, decode_answer_sht1x },
+    { 0x3553, 0xa001, "TEMPer1F",   0, 2, 0, decode_answer_fm75  },
 };
 
 /* memo: TEMPer2 cannot be distinguished with VID:PID,
